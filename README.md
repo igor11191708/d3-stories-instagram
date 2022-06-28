@@ -11,8 +11,8 @@
 - [x] Customizable **dark** and **light** scheme support for every story
 
 ## 1. Stories
-Define enum with your stories conforming to **IStory**
-<br/>**[important!] There must be defined at least one story**
+Define enum with your stories conforming to **IStory**</br>
+important** There must be defined at least one story
 
 ```swift
     public enum Stories: IStory {
