@@ -49,7 +49,7 @@ Define enum with your stories conforming to **IStory**.
 
 ## 2. Create stories view
 
-* `manager` - package standard manager **StoriesManager.self** for managing stories life circle.  *Define your own manager conforming to **IStoriesManager** if you need some specific managing processes*
+* `manager` - package standard manager **StoriesManager.self** for managing stories life circle. <br/>*Define your own manager conforming to **IStoriesManager** if you need some specific managing processes*
 * `stories` - stories conforming to **IStory**
 
 ```Swift 
