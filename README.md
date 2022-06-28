@@ -63,7 +63,7 @@ Define enum with your stories conforming to **IStory**
 
 * `strategy` - default strategy for the item menu width allocation is **auto**
 
-| Size strategy | Description |
+| Strategy | Description |
 | --- | --- |
 |**circle**| Repeat stories |
 |**once**| Show just once |
