@@ -12,7 +12,7 @@
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**</br>
-important** There must be defined at least one story
+** There must be defined at least one story**
 
 ```swift
     public enum Stories: IStory {
