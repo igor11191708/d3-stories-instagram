@@ -1,4 +1,4 @@
-# SwiftUI and Combine - Stories instagram component
+# SwiftUI and Combine - Stories instagram widget
 
 
  ## Features

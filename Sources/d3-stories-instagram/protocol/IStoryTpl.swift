@@ -9,7 +9,7 @@ import SwiftUI
 
 
 /// Template view for a story
-@available(iOS 15.0, macOS 12.0, watchOS 6.0, *)
+@available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 6.0, *)
 public protocol IStoryTpl: View{
         
     associatedtype StoryType : IStory
