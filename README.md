@@ -8,7 +8,7 @@
 - [x] Customize component with you own stories and every story with it's own view
 - [x] Customize time longivity for every story
 - [x] iOS and macOS support
-- [x] Dark and light scheme support for every story
+- [x] Customizable **dark** and **light** scheme support for every story
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**.
