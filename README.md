@@ -71,7 +71,7 @@ Define enum with your stories conforming to **IStory**
 
 * `current` - start story if not defined start with first
 
-* `leeway` - delay before start stories
+* `leeway` - delay before start stories, default **.seconds(0)**
 
 
 ## SwiftUI example of using package
