@@ -16,6 +16,7 @@
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**
+**There must be defined at least one story**
 
 ```swift
     public enum Stories: IStory {
