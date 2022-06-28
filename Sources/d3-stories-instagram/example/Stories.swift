@@ -47,5 +47,4 @@ public enum Stories: IStory {
         }
     }
 
-
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 
 /// Interface for managing stories life circle for ``StoriesView``
-/// Define your own manager conforming to Stories Manager if you need some specific managing processes
+/// Define your own manager conforming to IStoriesManager if you need some specific managing processes
 public protocol IStoriesManager: ObservableObject {
 
     associatedtype Element: IStory

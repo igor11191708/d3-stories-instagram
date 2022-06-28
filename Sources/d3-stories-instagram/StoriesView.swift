@@ -22,10 +22,12 @@ public struct StoriesView<M : IStoriesManager>: View {
     // MARK: - Life circle
 
     /// - Parameters:
+    ///   - manager: Managing stories life circle
+    ///   - stories: Set of stories
     ///   - current: Start story
     ///   - strategy: `.once` or `.circle`
     ///   - leeway: Delay before start stories
-    ///   - stories: Set of stories
+
     public init(
         manager: M.Type,
         stories: [M.Element],
