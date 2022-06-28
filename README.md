@@ -10,10 +10,6 @@
 - [x] iOS and macOS support
 - [x] Dark and light scheme support for every story
 
-## Documentation(API)
-- You need to have Xcode 13 installed in order to have access to Documentation Compiler (DocC)
-- Go to Product > Build Documentation or **⌃⇧⌘ D**
-
 ## 1. Stories
 Define enum with your stories conforming to **IStory**
 **There must be defined at least one story**
@@ -86,3 +82,7 @@ Define enum with your stories conforming to **IStory**
 [![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_02.png)](https://youtu.be/PQRkU7yWUrk)
 
 [![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_03.png)](https://youtu.be/PQRkU7yWUrk)
+
+## Documentation(API)
+- You need to have Xcode 13 installed in order to have access to Documentation Compiler (DocC)
+- Go to Product > Build Documentation or **⌃⇧⌘ D**
