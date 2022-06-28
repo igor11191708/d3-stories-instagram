@@ -77,7 +77,7 @@ Define enum with your stories conforming to **IStory**
 
 * `leeway` - delay before start stories
 
-[![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_01.gif = 320x)](https://youtu.be/PQRkU7yWUrk)
+[![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_01.gif {width=320px})](https://youtu.be/PQRkU7yWUrk)
 
 [![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_02.png)](https://youtu.be/PQRkU7yWUrk)
 
