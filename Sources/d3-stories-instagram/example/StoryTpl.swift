@@ -75,7 +75,7 @@ public struct StoryTpl<T : IStory>: IStoryTpl {
 struct StoryTpl_Previews: PreviewProvider {
     static var previews: some View {
        EmptyView()
-        // StoryTpl(Stories.first, .yellow, "Story", .constant(0.1))
+        StoryTpl(Stories.first, .yellow, "Story", .constant(0.1))
     }
 }
 
