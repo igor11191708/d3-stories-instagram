@@ -11,7 +11,7 @@
 - [x] Dark and light scheme support for every story
 
 ## 1. Stories
-Define enum with your stories conforming to **IStory**
+Define enum with your stories conforming to **IStory**.
 **There must be defined at least one story**
 
 ```swift
