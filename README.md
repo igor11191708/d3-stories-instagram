@@ -12,7 +12,7 @@
 - [x] Customizable **dark** and **light** scheme support for every story
 
 ## 1. Stories
-Define enum with your stories conforming to **IStory**</br>
+Define enum with your stories conforming to **IStory**
 
 ```swift
     public enum Stories: IStory {
