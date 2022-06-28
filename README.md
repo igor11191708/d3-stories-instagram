@@ -33,7 +33,7 @@ Define enum with your stories conforming to **IStory**</br>
         
         public var duration: TimeInterval {
             switch self{
-                case .first, .third : return 4
+                case .first, .third : return 5
                 default : return 3
             }
         }
