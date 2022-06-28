@@ -5,8 +5,8 @@
 - [x] Long tap - pause stories showcase
 - [x] Tap - next story
 - [x] Leeway - pause before start stories
-- [x] Customize component with you own stories
-- [x] Customize time longivity of every story
+- [x] Customize component with you own stories and every story with it's own view
+- [x] Customize time longivity for every story
 - [x] iOS and macOS support
 - [x] Dark and light scheme support for every story
 
