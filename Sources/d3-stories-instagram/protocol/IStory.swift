@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+@available(iOS 15.0, macOS 12.0, watchOS 6.0, *)
 public protocol IStory: Hashable, CaseIterable{
     
     associatedtype ViewTpl : View

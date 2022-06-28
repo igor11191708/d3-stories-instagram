@@ -8,10 +8,9 @@
 import SwiftUI
 
 /// Component demonstrating stories
-@available(iOS 15.0, macOS 12.0, watchOS 6.0, *)
-public struct StoriesView<M : IStoriesManager>: View {
+struct StoriesView<M : IStoriesManager>: View {
 
-    public typealias Item = M.Element
+    typealias Item = M.Element
 
     /// Detecting color scheme
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
@@ -22,11 +21,12 @@ public struct StoriesView<M : IStoriesManager>: View {
     // MARK: - Life circle
 
     /// - Parameters:
+    ///   - manager: Start story
     ///   - current: Start story
     ///   - strategy: `.once` or `.circle`
     ///   - leeway: Delay before start stories
     ///   - stories: Set of stories
-    public init(
+    init(
         manager: M.Type,
         stories: [M.Element],
         current: Item? = nil,
@@ -43,7 +43,7 @@ public struct StoriesView<M : IStoriesManager>: View {
     }
 
     /// The content and behavior of the view.
-    public var body: some View {
+    var body: some View {
         GeometryReader { proxy in
             let h = proxy.size.height / 25
             bodyTpl
