@@ -25,9 +25,9 @@ Define enum with your stories conforming to **IStory**</br>
         @ViewBuilder
         public func builder(progress : Binding<CGFloat>) -> some View {
             switch(self) {
-                case .first: StoryTpl(self, .green, "1", progress)
-                case .second: StoryTpl(self, .brown, "2", progress)
-                case .third: StoryTpl(self, .purple, "3", progress)
+                case .first:  StoryTpl(self, .green,  "1", progress)
+                case .second: StoryTpl(self, .brown,  "2", progress)
+                case .third:  StoryTpl(self, .purple, "3", progress)
             }
         }
         
