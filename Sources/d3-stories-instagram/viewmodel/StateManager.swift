@@ -8,6 +8,7 @@
 import Combine
 import SwiftUI
 
+/// Managing stories life circle
 final class StateManager {
 
     /// Sorry:) 0.00001 - fixing bug with animation in SwiftUI
@@ -26,8 +27,12 @@ final class StateManager {
 
     /// Story duration
     private var duration: TimeInterval = 0
-
+    
+    // MARK: - Life circle
+    
     deinit { print("deinit StateManager") }
+    
+    // MARK: - Private
 
     /// Schedule and start timer
     private func schedule(_ duration: TimeInterval) {
@@ -51,6 +56,8 @@ final class StateManager {
         startTime = Date() - TimeInterval(passed)
     }
 
+    // MARK: - API
+    
     /// Pause showing stories
     public func suspend() {
         let now = Date()
