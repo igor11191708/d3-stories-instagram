@@ -15,14 +15,17 @@ final class StateManager {
 
     /// Publisher for posting states ``StoriesState``
     let publisher = PassthroughSubject<StoriesState, Never>()
-
+    
     private var timerSubscription: AnyCancellable?
 
-    var progress: CGFloat = StateManager.startProgress
+    /// Current progress
+    private var progress: CGFloat = StateManager.startProgress
 
-    var startTime: Date?
+    /// When story started
+    private var startTime: Date?
 
-    var duration: TimeInterval = 0
+    /// Story duration
+    private var duration: TimeInterval = 0
 
     deinit { print("deinit StateManager") }
 
