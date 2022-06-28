@@ -33,9 +33,6 @@ struct StoriesView<M : IStoriesManager>: View {
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0)
     ) {
-        if stories.isEmpty{
-            fatalError("No stories")
-        }
 
         _model = StateObject(wrappedValue:
                 manager.init(stories: stories, current: current, strategy: strategy, leeway: leeway)
