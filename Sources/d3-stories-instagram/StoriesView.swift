@@ -18,9 +18,9 @@ struct StoriesView<M : IStoriesManager>: View {
     /// Managing stories life circle for ``StoriesView`` component
     @StateObject private var model: M
 
-    /// /// Shared var to control stories running process by external controls that are not inside StoriesWidget
-    private var pause : Binding<Bool>
-    
+    /// Shared var to control stories running process by external controls that are not inside StoriesWidget
+    private var pause: Binding<Bool>
+
     // MARK: - Life circle
 
     /// - Parameters:
@@ -35,11 +35,11 @@ struct StoriesView<M : IStoriesManager>: View {
         current: Item? = nil,
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0),
-        pause : Binding<Bool>
+        pause: Binding<Bool>
     ) {
 
         self.pause = pause
-        
+
         _model = StateObject(wrappedValue:
                 manager.init(stories: stories, current: current, strategy: strategy, leeway: leeway)
         )
@@ -63,23 +63,34 @@ struct StoriesView<M : IStoriesManager>: View {
 
     // MARK: - Private
 
-    private func onPause(value : Bool) {
-        if value{
-            model.suspend()
-        }else{
-            model.resume()
+
+    /// Process pause, resume actions Check suspended as action can come from Gesture or external source to pause or resume stories run
+    /// - Parameter value: true - pause, false - resume
+    private func onPause(value: Bool) {
+        if value {
+            if !model.suspended {
+                model.suspend()
+            }
+        } else {
+            if model.suspended {
+                model.resume()
+            }
         }
     }
-    
+
     ///Managing suspend and resume states
     private var gesture: some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged { _ in
-            if !model.suspended {
-                pause.wrappedValue = true
-            }
+                if !model.suspended {
+                    pause.wrappedValue = true
+                    model.suspend()
+                }
         }
-            .onEnded { _ in pause.wrappedValue = false }
+            .onEnded { _ in
+                pause.wrappedValue = false
+                model.resume()
+        }
     }
 
     /// Cover controls for step forward and backward and pause
@@ -99,7 +110,7 @@ struct StoriesView<M : IStoriesManager>: View {
             Color.white.opacity(0.001)
                 .frame(width: w * 0.25)
                 .onTapGesture() {
-                model.previouse()
+                    model.previouse()
             }
                 .simultaneousGesture(gesture)
         }
