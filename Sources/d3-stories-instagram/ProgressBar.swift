@@ -73,7 +73,7 @@ struct ProgressBar<Item : IStory>: View {
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        StoriesView(manager: StoriesManager.self, stories: Stories.allCases)
+        StoriesView(manager: StoriesManager.self, stories: Stories.allCases, pause: .constant(false))
             .preferredColorScheme(.dark)
     }
 }

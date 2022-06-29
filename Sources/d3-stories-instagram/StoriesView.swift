@@ -18,6 +18,9 @@ struct StoriesView<M : IStoriesManager>: View {
     /// Managing stories life circle for ``StoriesView`` component
     @StateObject private var model: M
 
+    /// /// Shared var to control stories running process by external controls that are not inside StoriesWidget
+    private var pause : Binding<Bool>
+    
     // MARK: - Life circle
 
     /// - Parameters:
@@ -31,9 +34,12 @@ struct StoriesView<M : IStoriesManager>: View {
         stories: [M.Element],
         current: Item? = nil,
         strategy: Strategy = .circle,
-        leeway: DispatchTimeInterval = .seconds(0)
+        leeway: DispatchTimeInterval = .seconds(0),
+        pause : Binding<Bool>
     ) {
 
+        self.pause = pause
+        
         _model = StateObject(wrappedValue:
                 manager.init(stories: stories, current: current, strategy: strategy, leeway: leeway)
         )
@@ -52,19 +58,28 @@ struct StoriesView<M : IStoriesManager>: View {
             .environment(\.colorScheme, model.current.colorScheme ?? colorScheme)
             .onAppear(perform: model.begin)
             .onDisappear(perform: model.end)
+            .onChange(of: pause.wrappedValue, perform: onPause)
     }
 
     // MARK: - Private
 
+    private func onPause(value : Bool) {
+        if value{
+            model.suspend()
+        }else{
+            model.resume()
+        }
+    }
+    
     ///Managing suspend and resume states
     private var gesture: some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged { _ in
             if !model.suspended {
-                model.suspend()
+                pause.wrappedValue = true
             }
         }
-            .onEnded { _ in model.resume() }
+            .onEnded { _ in pause.wrappedValue = false }
     }
 
     /// Cover controls for step forward and backward and pause

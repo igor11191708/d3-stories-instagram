@@ -10,6 +10,7 @@
 - [x] Customize time longevity for every story
 - [x] iOS and macOS support
 - [x] Customizable **dark** and **light** scheme support for every story
+- [x] Control stories running process by external controls that are not inside StoriesWidget
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**
@@ -72,6 +73,8 @@ Define enum with your stories conforming to **IStory**
 * `current` - start story if not defined start with first
 
 * `leeway` - delay before start stories, default **.seconds(0)**
+
+* `pause` - shared var to control stories running process by external controls that are not inside StoriesWidget, default **.constant(false)**. For example if you launched modal view and need to pause running stories while modal view is existed you can do it via shared variable passing as a binding in StoriesWidget.
 
 
 ## SwiftUI example of using package

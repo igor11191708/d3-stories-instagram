@@ -13,6 +13,9 @@ public struct StoriesWidget<M : IStoriesManager>: View {
 
     public typealias Item = M.Element
 
+    /// Shared var to control stories running process by external controls that are not inside StoriesWidget
+    private var pause : Binding<Bool>
+    
     // MARK: - Config
     
     /// Managing stories life circle
@@ -42,7 +45,8 @@ public struct StoriesWidget<M : IStoriesManager>: View {
         stories: [M.Element],
         current: Item? = nil,
         strategy: Strategy = .circle,
-        leeway: DispatchTimeInterval = .seconds(0)
+        leeway: DispatchTimeInterval = .seconds(0),
+        pause : Binding<Bool> = .constant(false)
     ) {
        
         self.manager = manager
@@ -50,6 +54,7 @@ public struct StoriesWidget<M : IStoriesManager>: View {
         self.current = current
         self.strategy = strategy
         self.leeway = leeway
+        self.pause = pause
     }
     
     public var body: some View {
@@ -61,7 +66,8 @@ public struct StoriesWidget<M : IStoriesManager>: View {
                 stories: stories,
                 current: current,
                 strategy: strategy,
-                leeway: leeway
+                leeway: leeway,
+                pause: pause
             )
         }
     }
