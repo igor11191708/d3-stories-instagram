@@ -10,7 +10,7 @@
 - [x] Customize time longevity for every story
 - [x] iOS and macOS support
 - [x] Customizable **dark** and **light** scheme support for every story
-- [x] Control stories running process by external controls that are not inside StoriesWidget
+- [x] Control stories run as by external controls that are not inside StoriesWidget so via Gesture
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**
