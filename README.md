@@ -7,7 +7,7 @@
 - [x] Tap - next story
 - [x] Leeway - pause before start stories
 - [x] Customize component with you own stories and every story with it's own view
-- [x] Customize time longivity for every story
+- [x] Customize time longevity for every story
 - [x] iOS and macOS support
 - [x] Customizable **dark** and **light** scheme support for every story
 
