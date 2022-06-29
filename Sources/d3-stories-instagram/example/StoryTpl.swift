@@ -39,14 +39,14 @@ public struct StoryTpl<T : IStory>: IStoryTpl {
     }
 
     // MARK: - Private
-    
+
     @ViewBuilder
     private func textBuilder(_ text: String, size: CGFloat = 350) -> some View {
         VStack {
             Text(text).font(.system(size: size, weight: .bold, design: .rounded))
         }
     }
-    
+
     @ViewBuilder
     private var textTpl: some View {
         let d = 180 - (180 * progress)
@@ -58,8 +58,9 @@ public struct StoryTpl<T : IStory>: IStoryTpl {
 
             textBuilder("story", size: 50)
         }.environment(\.colorScheme, story.colorScheme ?? colorScheme)
+         .padding(.bottom, 60)
     }
-    
+
     @ViewBuilder
     private var textBuilder: some View {
         #if os(iOS)
@@ -74,7 +75,7 @@ public struct StoryTpl<T : IStory>: IStoryTpl {
 
 struct StoryTpl_Previews: PreviewProvider {
     static var previews: some View {
-       EmptyView()
+        EmptyView()
         StoryTpl(Stories.first, .yellow, "Story", .constant(0.1))
     }
 }
