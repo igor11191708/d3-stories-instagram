@@ -80,7 +80,7 @@ Define enum with your stories conforming to **IStory**
 
 ## Stories life circle
 You can observe events of the stories life circle and react on it's change. Pass closure to config of **StoriesWidget**.<br>
-- onStoriesStateChanged(StoriesState) - Closure to react on stories state change
+- **onStoriesStateChanged(**StoriesState**)** - Closure to react on stories state change
 
 | State | Description |
 | --- | --- |
