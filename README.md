@@ -83,12 +83,12 @@ You can observe events of the stories life circle and react on it's change. Pass
 - **onStoriesStateChanged(**StoriesState**)** - Closure to react on stories state change
 
 ``` swift
-                StoriesWidget(
-                    manager: StoriesManager.self,
-                    stories: Stories.allCases                    
-                ){ state in
-                    print("Do something on \(state) change")
-                }
+    StoriesWidget(
+        manager: StoriesManager.self,
+        stories: Stories.allCases                    
+    ){ state in
+        print("Do something on \(state) change")
+    }
 ```
 
 | State | Description |
