@@ -11,18 +11,18 @@ import SwiftUI
 /// Stories view states Inner data for managing stories view life circle
 public enum StoriesState: Equatable{
     
-    /// before start
+    /// Waiting to start If there's leeway this is the state during this delay before the big start
     case ready
-    /// start of first stories, start of big circle
+    /// Start of first stories, start of big circle
     case start
-    /// begin
+    /// Begin
     case begin
-    /// pause showing story
+    /// Pause showing story
     case suspend(CGFloat)
-    /// resume showing story
+    /// Resume showing story
     case resume(CGFloat)
-    ///end of a story
+    ///End of a story
     case end
-    ///end of all stories big circle
+    ///End of all stories big circle
     case finish
 }
