@@ -119,7 +119,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
     /// - Parameter state: Stories showcase state
     private func onStateChanged(_ state: StoriesState) {
         
-        /// Need this to overcome SwiftUI update specifics
+        /// Need this to overcome SwiftUI view update specifics
         if state != .begin{ self.state = state }
         
         switch state {
@@ -129,7 +129,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
             case .resume(let progress): resumeAnimation(progress)
             default: return
         }
-        /// Need this to overcome SwiftUI update specifics
+        /// Need this to overcome SwiftUI view update specifics
         if state == .begin { self.state = state }
     }
 
