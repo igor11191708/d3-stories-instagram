@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+/// Emerging stories state for ``StoriesWidget``
 struct StoriesStateKey : PreferenceKey{
     
     typealias Value = StoriesState
