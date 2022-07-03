@@ -87,7 +87,7 @@ You can observe events of the stories life circle and react on it's change. Pass
         manager: StoriesManager.self,
         stories: Stories.allCases                    
     ){ state in
-        print("Do something on \(state) change")
+        print("Do something on stories \(state) change")
     }
 ```
 
