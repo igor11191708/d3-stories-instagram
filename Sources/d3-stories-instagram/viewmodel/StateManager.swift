@@ -30,7 +30,7 @@ final class StateManager {
     
     // MARK: - Life circle
     
-    deinit { print("deinit StateManager") }
+    deinit { end(); print("deinit StateManager") }
     
     // MARK: - Private
 
@@ -48,7 +48,7 @@ final class StateManager {
     }
 
     private func publishNext() {
-        publisher.send(.next)
+        publisher.send(.end)
     }
 
     private func updateStartTime() {
@@ -75,8 +75,19 @@ final class StateManager {
         schedule(left)
         publisher.send(.resume(progress))
     }
-
-    /// Start showing stories
+    
+    /// Start big stories circle
+    /// - Parameters:
+    ///   - duration: Duration for the first story
+    ///   - leeway: Delay befire start
+    public func start(_ duration: TimeInterval, leeway : DispatchTimeInterval){
+        publisher.send(.start)
+        DispatchQueue.main.asyncAfter(deadline: .now() + leeway) { [weak self] in
+            self?.begin(duration)
+        }
+    }
+    
+    /// Start showing story
     public func begin(_ duration: TimeInterval) {
         self.duration = duration
         self.progress = StateManager.startProgress
@@ -87,6 +98,7 @@ final class StateManager {
 
     /// Finish showing stories
     public func end() {
+        publisher.send(.finish)
         timerSubscription = nil
     }
 

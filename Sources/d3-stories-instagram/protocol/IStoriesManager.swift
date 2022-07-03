@@ -17,8 +17,12 @@ public protocol IStoriesManager: ObservableObject {
 
     /// Time progress demonstating the current story
     var progress: CGFloat { get set }
+    
+    /// Current stories state
+    ///  Life circle: Start - ... Begin - (Suspend) - (Resume) - End ... - Finish
+    var state: StoriesState { get }
 
-    /// Stories paused
+    /// Check is suspended
     var suspended: Bool { get }
     
     /// Time buffer after suspention when Tap gesture is valid to move to the next story
@@ -47,7 +51,7 @@ public protocol IStoriesManager: ObservableObject {
     func resume()
 
     /// Start showing stories
-    func begin()
+    func start()
 
     /// Finish showing stories
     func end()

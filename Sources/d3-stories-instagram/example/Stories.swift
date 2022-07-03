@@ -32,7 +32,7 @@ public enum Stories: IStory {
     /// Define every story duration or just one as a default for everyone
     public var duration: TimeInterval {
         switch self{
-        case .first, .third : return 4
+        case .first, .third : return 2
         default : return 3
         }
     }

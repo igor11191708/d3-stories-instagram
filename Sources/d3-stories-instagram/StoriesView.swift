@@ -47,18 +47,20 @@ struct StoriesView<M : IStoriesManager>: View {
 
     /// The content and behavior of the view.
     var body: some View {
-        GeometryReader { proxy in
+            GeometryReader { proxy in
             let h = proxy.size.height / 25
             bodyTpl
                 .overlay(directionControl)
-
             progressView
                 .padding(.top, h)
         }
             .environment(\.colorScheme, model.current.colorScheme ?? colorScheme)
-            .onAppear(perform: model.begin)
+            .onAppear(perform: model.start)
             .onDisappear(perform: model.end)
             .onChange(of: pause.wrappedValue, perform: onPause)
+            .preference(key: StoriesStateKey.self,
+                        value: model.state)
+        
     }
 
     // MARK: - Private

@@ -15,16 +15,20 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
     /// Time progress demonstating the current story
     @Published public var progress: CGFloat = StateManager.startProgress
 
-    /// Stories paused
-    @Published public private(set) var suspended: Bool = false
+    /// Current stories state
+    ///  Life circle: Start - ... Begin - (Suspend) - (Resume) - End ... - Finish
+    @Published public private(set) var state: StoriesState = .ready
+
+    /// Check is suspended
+    public var suspended: Bool { if case .suspend(_) = state { return true } else { return false } }
 
     /// State manager
     private let manager = StateManager()
 
     /// Subscriptions
     private var sub: AnyCancellable?
-    
-    @Published public var tapTime : Bool = false
+
+    @Published public var tapTime: Bool = false
 
     // MARK: - Config
 
@@ -52,58 +56,49 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
         self.current = current ?? stories.first!
         self.strategy = strategy
         self.leeway = leeway
-
+        
         sub = manager
             .publisher
-            .sink { [weak self] in self?.onStateChanged($0) }
-        
-   }
+            .sink { [weak self] in
+                self?.onStateChanged($0) }
+
+    }
 
     deinit { print("deinit StoriesManager") }
 
     // MARK: - API
 
-    func onLongTap(){
-
-    }
-    
     /// Pause showing stories
     public func suspend() {
         if suspended { return }
-        
+
+        manager.suspend()
+
         tapTime = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25){ [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
             self?.tapTime = false
         }
-        
-        suspended = true
-        manager.suspend()
     }
 
     /// Rsume showing stories
     public func resume() {
         manager.resume()
-        suspended = false
     }
 
     /// Start showing stories
-    public func begin() {
-        let duration = current.duration
-        DispatchQueue.main.asyncAfter(deadline: .now() + leeway) { [weak self] in
-            self?.manager.begin(duration)
-        }
+    public func start() {
+        manager.start(current.duration, leeway: leeway)
     }
 
     /// Finish showing stories
     public func end() {
-        manager.end()
+       manager.end()
     }
 
     /// Next story
     public func next() {
         current = current.next
         if validateOnce(current) { return end() }
-
         manager.begin(current.duration)
     }
 
@@ -123,15 +118,21 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
     /// Process state change
     /// - Parameter state: Stories showcase state
     private func onStateChanged(_ state: StoriesState) {
+        
+        /// Need this to overcome SwiftUI update specifics
+        if state != .begin{ self.state = state }
+        
         switch state {
-        case .next: next()
-        case .suspend(let progress): return suspendAnimation(progress)
-        case .resume(let progress): resumeAnimation(progress)
-        case .begin: initAnimation()
+            case .begin: initAnimation()
+            case .end: next()
+            case .suspend(let progress): return suspendAnimation(progress)
+            case .resume(let progress): resumeAnimation(progress)
+            default: return
         }
+        /// Need this to overcome SwiftUI update specifics
+        if state == .begin { self.state = state }
     }
 
-    
     /// Typycal time slot for a story
     private func initAnimation() {
         self.progress = StateManager.startProgress
@@ -146,7 +147,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
         let duration = (1 - progress) * current.duration
         runAnimation(1, duration)
     }
-    
+
     /// Customed animation for progress
     /// - Parameters:
     ///   - progress: Endpoint progress

@@ -78,6 +78,20 @@ Define enum with your stories conforming to **IStory**
 * `pause` - shared var to control stories run by external sources that are not inside StoriesWidget, default **.constant(false)**. For example if you launched modal view and need to pause running stories while modal view is existed you can do it via shared variable passing as a binding in StoriesWidget.
 
 
+## Stories life circle
+You can observe events of the stories life circle and react on it's change. Pass closure to config of **StoriesWidget**.<br>
+- onStoriesStateChanged(StoriesState) - Closure to react on stories state change
+
+| State | Description |
+| --- | --- |
+|**ready**| Waiting to start If there's leeway this is the state during this delay before the big start |
+|**start**| Big start |
+|**begin**| Begin of a story |
+|**end**| End of a story |
+|**suspend**| Currently demostration is paused |
+|**resume**| Resumed after pause |
+|**finish**| Big finish. At the end of the stratagy .once  |
+
 ## SwiftUI example of using package
 [d3-stories-instagram-example](https://github.com/The-Igor/d3-stories-instagram-example)
 

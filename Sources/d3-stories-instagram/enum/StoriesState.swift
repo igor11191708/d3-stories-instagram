@@ -9,14 +9,20 @@ import SwiftUI
 
 
 /// Stories view states Inner data for managing stories view life circle
-enum StoriesState{
+public enum StoriesState: Equatable{
     
-    /// start
+    /// before start
+    case ready
+    /// start of first stories, start of big circle
+    case start
+    /// begin
     case begin
-    /// next story
-    case next
     /// pause showing story
     case suspend(CGFloat)
     /// resume showing story
     case resume(CGFloat)
+    ///end of a story
+    case end
+    ///end of all stories big circle
+    case finish
 }

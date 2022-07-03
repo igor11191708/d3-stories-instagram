@@ -32,6 +32,9 @@ public struct StoriesWidget<M : IStoriesManager>: View {
     
     ///Delay before start stories
     let leeway: DispatchTimeInterval
+    
+    /// Callback on stories state change
+    let onStoriesStateChanged : ((StoriesState) -> Void)?
 
     // MARK: - Life circle
     
@@ -46,7 +49,8 @@ public struct StoriesWidget<M : IStoriesManager>: View {
         current: Item? = nil,
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0),
-        pause : Binding<Bool> = .constant(false)
+        pause : Binding<Bool> = .constant(false),
+        onStoriesStateChanged : ((StoriesState) -> Void)?
     ) {
        
         self.manager = manager
@@ -55,6 +59,7 @@ public struct StoriesWidget<M : IStoriesManager>: View {
         self.strategy = strategy
         self.leeway = leeway
         self.pause = pause
+        self.onStoriesStateChanged = onStoriesStateChanged
     }
     
     public var body: some View {
@@ -69,6 +74,8 @@ public struct StoriesWidget<M : IStoriesManager>: View {
                 leeway: leeway,
                 pause: pause
             )
+            .onPreferenceChange(StoriesStateKey.self) { state in
+                onStoriesStateChanged?(state) }
         }
     }
 }
