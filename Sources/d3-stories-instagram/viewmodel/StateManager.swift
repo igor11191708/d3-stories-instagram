@@ -30,7 +30,7 @@ final class StateManager {
     
     // MARK: - Life circle
     
-    deinit { end(); print("deinit StateManager") }
+    deinit { print("deinit StateManager") }
     
     // MARK: - Private
 
@@ -97,7 +97,7 @@ final class StateManager {
     }
 
     /// Finish showing stories
-    public func end() {
+    public func finish() {
         publisher.send(.finish)
         timerSubscription = nil
     }

@@ -33,16 +33,18 @@ public struct StoriesWidget<M : IStoriesManager>: View {
     ///Delay before start stories
     let leeway: DispatchTimeInterval
     
-    /// Callback on stories state change
+    /// React on stories state change
     let onStoriesStateChanged : ((StoriesState) -> Void)?
 
     // MARK: - Life circle
     
     /// - Parameters:
+    ///   - manager: Start story
     ///   - current: Start story
     ///   - strategy: `.once` or `.circle`
     ///   - leeway: Delay before start stories
     ///   - stories: Set of stories
+    ///   - onStoriesStateChanged: Clouser to react on stories state change
     public init(
         manager: M.Type,
         stories: [M.Element],
@@ -64,7 +66,7 @@ public struct StoriesWidget<M : IStoriesManager>: View {
     
     public var body: some View {
         if stories.isEmpty{
-            Text("No stories")
+            Text("No stories").padding()
         }else{
             StoriesView(
                 manager: manager,

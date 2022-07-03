@@ -44,23 +44,23 @@ public protocol IStoriesManager: ObservableObject {
 
     // MARK: - API
 
+    /// Start showing stories
+    func start()
+    
     /// Pause showing stories
     func suspend()
 
     /// Rsume showing stories
     func resume()
 
-    /// Start showing stories
-    func start()
-
-    /// Finish showing stories
-    func end()
-
     /// Next story
     func next()
 
     /// Previouse story
     func previouse()
+
+    /// Finish showing stories
+    func finish()
 
     // MARK: - Life circle
     

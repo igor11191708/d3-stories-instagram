@@ -51,14 +51,14 @@ struct ProgressBar<Item : IStory>: View {
                 .clipShape(Capsule())
     }
     
-    
-    @ViewBuilder
+   
     /// Progress slot overlay view
     /// - Parameters:
     ///   - item: Story
     ///   - width: Avalable space
     ///   - current: Current story
     /// - Returns: View
+    @ViewBuilder
     private func progressTpl (_ item: Item, _ width: CGFloat, _ current: Item) -> some View {
         if item.isBefore(current) {  //has already passed
             Color.primary

@@ -91,14 +91,14 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
     }
 
     /// Finish showing stories
-    public func end() {
-       manager.end()
+    public func finish() {
+       manager.finish()
     }
 
     /// Next story
     public func next() {
         current = current.next
-        if validateOnce(current) { return end() }
+        if validateOnce(current) { return finish() }
         manager.begin(current.duration)
     }
 

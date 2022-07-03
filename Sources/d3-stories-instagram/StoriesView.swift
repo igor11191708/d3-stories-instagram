@@ -47,7 +47,7 @@ struct StoriesView<M : IStoriesManager>: View {
 
     /// The content and behavior of the view.
     var body: some View {
-            GeometryReader { proxy in
+        GeometryReader { proxy in
             let h = proxy.size.height / 25
             bodyTpl
                 .overlay(directionControl)
@@ -56,11 +56,10 @@ struct StoriesView<M : IStoriesManager>: View {
         }
             .environment(\.colorScheme, model.current.colorScheme ?? colorScheme)
             .onAppear(perform: model.start)
-            .onDisappear(perform: model.end)
+            .onDisappear(perform: model.finish)
             .onChange(of: pause.wrappedValue, perform: onPause)
-            .preference(key: StoriesStateKey.self,
-                        value: model.state)
-        
+            .preference(key: StoriesStateKey.self, value: model.state)
+
     }
 
     // MARK: - Private
@@ -84,14 +83,14 @@ struct StoriesView<M : IStoriesManager>: View {
     private var gesture: some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged { _ in
-                if !model.suspended {
-                    pause.wrappedValue = true
-                    model.suspend()
-                }
+            if !model.suspended {
+                pause.wrappedValue = true
+                model.suspend()
+            }
         }
             .onEnded { _ in
-                pause.wrappedValue = false
-                model.resume()
+            pause.wrappedValue = false
+            model.resume()
         }
     }
 
@@ -112,7 +111,7 @@ struct StoriesView<M : IStoriesManager>: View {
             Color.white.opacity(0.001)
                 .frame(width: w * 0.25)
                 .onTapGesture() {
-                    model.previouse()
+                model.previouse()
             }
                 .simultaneousGesture(gesture)
         }
