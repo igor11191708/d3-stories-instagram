@@ -92,7 +92,7 @@ You can observe events of the stories life circle and react on it's change. Pass
 |**resume**| Resumed after pause |
 |**finish**| Big finish. At the end of the stratagy .once  |
 
-[Stories life circle](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/stories_state.png)
+![Stories life circle](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/stories_state.png)
 
 ## SwiftUI example of using package
 [d3-stories-instagram-example](https://github.com/The-Igor/d3-stories-instagram-example)
