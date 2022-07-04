@@ -64,6 +64,7 @@ public struct StoriesWidget<M : IStoriesManager>: View {
         self.onStoriesStateChanged = onStoriesStateChanged
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         if let error = validate(){
             GeometryReader{ _ in  }.overlay(Text(error.rawValue).padding())
