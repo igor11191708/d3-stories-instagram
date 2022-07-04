@@ -12,10 +12,7 @@ import SwiftUI
 public struct StoriesWidget<M : IStoriesManager>: View {
 
     public typealias Item = M.Element
-
-    /// Shared var to control stories running process by external controls that are not inside StoriesWidget
-    private var pause : Binding<Bool>
-    
+   
     // MARK: - Config
     
     /// Managing stories life circle
@@ -32,6 +29,9 @@ public struct StoriesWidget<M : IStoriesManager>: View {
     
     ///Delay before start stories
     let leeway: DispatchTimeInterval
+    
+    /// Shared var to control stories running process by external controls that are not inside StoriesWidget
+    var pause : Binding<Bool>
     
     /// React on stories state change
     let onStoriesStateChanged : ((StoriesState) -> Void)?
