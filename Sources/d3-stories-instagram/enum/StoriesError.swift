@@ -27,10 +27,12 @@ enum StoriesError : String, Error{
         return nil
     }
     
-    
     /// Tpl for demonstrating an error
     var builder : some View{
-        GeometryReader{ _ in  }.overlay(Text(self.rawValue).padding())
+        GeometryReader{ _ in  }
+            .overlay(Text(self.rawValue))
+            .foregroundColor(.primary)
+            .background(.thinMaterial)
     }
     
 }
