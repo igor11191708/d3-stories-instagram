@@ -66,7 +66,7 @@ public struct StoriesWidget<M : IStoriesManager>: View {
     
     /// The content and behavior of the view.
     public var body: some View {
-        if let error = validate(){
+        if let error = StoriesError.validate(stories){
             GeometryReader{ _ in  }.overlay(Text(error.rawValue).padding())
         }else{
             StoriesView(
@@ -80,20 +80,6 @@ public struct StoriesWidget<M : IStoriesManager>: View {
             .onPreferenceChange(StoriesStateKey.self) { state in
                 onStoriesStateChanged?(state) }
         }
-    }
-    
-    // MARK: - Private
-        
-    /// Validate input data
-    /// - Returns: Error
-    private func validate() -> StoriesError?  {
-        if stories.isEmpty{
-            return .empty
-        }else if !stories.allSatisfy({ $0.duration > 0 }){
-            return .duration
-        }
-        
-        return nil
     }
 }
 
