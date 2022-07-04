@@ -5,7 +5,7 @@
 //  Created by Igor Shelopaev on 04.07.2022.
 //
 
-import Foundation
+import SwiftUI
 
 
 /// Set of errors for input data validation
@@ -25,6 +25,12 @@ enum StoriesError : String, Error{
         }
         
         return nil
+    }
+    
+    
+    /// Tpl for demonstrating an error
+    var builder : some View{
+        GeometryReader{ _ in  }.overlay(Text(self.rawValue).padding())
     }
     
 }

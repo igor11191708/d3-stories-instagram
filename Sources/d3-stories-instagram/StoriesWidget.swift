@@ -67,7 +67,7 @@ public struct StoriesWidget<M : IStoriesManager>: View {
     /// The content and behavior of the view.
     public var body: some View {
         if let error = StoriesError.validate(stories){
-            GeometryReader{ _ in  }.overlay(Text(error.rawValue).padding())
+            error.builder
         }else{
             StoriesView(
                 manager: manager,
