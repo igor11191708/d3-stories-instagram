@@ -8,8 +8,7 @@
 import SwiftUI
 
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
-public struct StoryTpl<T : IStory>: IStoryTpl {
-
+public struct StoryTpl<T: IStory>: IStoryTpl {
     /// Detecting color scheme
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
 
@@ -29,7 +28,7 @@ public struct StoryTpl<T : IStory>: IStoryTpl {
         self.story = story
         self.color = color
         self.text = text
-        self._progress = progress
+        _progress = progress
     }
 
     public var body: some View {
@@ -58,7 +57,7 @@ public struct StoryTpl<T : IStory>: IStoryTpl {
 
             textBuilder("story", size: 50)
         }.environment(\.colorScheme, story.colorScheme ?? colorScheme)
-         .padding(.bottom, 60)
+            .padding(.bottom, 60)
     }
 
     @ViewBuilder
@@ -69,8 +68,6 @@ public struct StoryTpl<T : IStory>: IStoryTpl {
             textTpl.drawingGroup()
         #endif
     }
-
-
 }
 
 struct StoryTpl_Previews: PreviewProvider {
@@ -79,5 +76,3 @@ struct StoryTpl_Previews: PreviewProvider {
         StoryTpl(Stories.first, .yellow, "Story", .constant(0.1))
     }
 }
-
-

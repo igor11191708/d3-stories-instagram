@@ -11,7 +11,6 @@ import SwiftUI
 /// Managing logic for ``StoriesWidget`` component
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public final class StoriesManager<Item: IStory>: IStoriesManager {
-
     /// Time progress demonstating the current story
     @Published public var progress: CGFloat = StateManager.startProgress
 
@@ -20,7 +19,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
     @Published public private(set) var state: StoriesState = .ready
 
     /// Check is suspended
-    public var suspended: Bool { if case .suspend(_) = state { return true } else { return false } }
+    public var suspended: Bool { if case .suspend = state { return true } else { return false } }
 
     /// State manager
     private let manager = StateManager()
@@ -45,6 +44,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
     public let leeway: DispatchTimeInterval
 
     // MARK: - Life circle
+
     /// Delay before start showing stories
     public init(
         stories: [Item],
@@ -56,12 +56,12 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
         self.current = current ?? stories.first!
         self.strategy = strategy
         self.leeway = leeway
-        
+
         sub = manager
             .publisher
             .sink { [weak self] in
-                self?.onStateChanged($0) }
-
+                self?.onStateChanged($0)
+            }
     }
 
     deinit { print("deinit StoriesManager") }
@@ -92,7 +92,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
 
     /// Finish showing stories
     public func finish() {
-       manager.finish()
+        manager.finish()
     }
 
     /// Next story
@@ -108,7 +108,6 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
         manager.begin(current.duration)
     }
 
-
     // MARK: - Private
 
     private func validateOnce(_ next: Item) -> Bool {
@@ -118,16 +117,15 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
     /// Process state change
     /// - Parameter state: Stories showcase state
     private func onStateChanged(_ state: StoriesState) {
-        
         /// Need this to overcome SwiftUI view update specifics
-        if state != .begin{ self.state = state }
-        
+        if state != .begin { self.state = state }
+
         switch state {
-            case .begin: initAnimation()
-            case .end: next()
-            case .suspend(let progress): return suspendAnimation(progress)
-            case .resume(let progress): resumeAnimation(progress)
-            default: return
+        case .begin: initAnimation()
+        case .end: next()
+        case let .suspend(progress): return suspendAnimation(progress)
+        case let .resume(progress): resumeAnimation(progress)
+        default: return
         }
         /// Need this to overcome SwiftUI view update specifics
         if state == .begin { self.state = state }
@@ -135,7 +133,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
 
     /// Typycal time slot for a story
     private func initAnimation() {
-        self.progress = StateManager.startProgress
+        progress = StateManager.startProgress
         runAnimation(1, current.duration)
     }
 
@@ -157,6 +155,4 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
             self.progress = progress
         }
     }
-
 }
-

@@ -1,5 +1,5 @@
-import XCTest
 @testable import d3_stories_instagram
+import XCTest
 
 final class d3_stories_instagramTests: XCTestCase {
     func testExample() throws {

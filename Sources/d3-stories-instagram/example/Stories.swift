@@ -9,7 +9,6 @@ import SwiftUI
 
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public enum Stories: IStory {
-      
     case first
     case second
     case third
@@ -18,8 +17,8 @@ public enum Stories: IStory {
 
     @ViewBuilder
     /// Define view template for every story
-    public func builder(progress : Binding<CGFloat>) -> some View {
-        switch(self) {
+    public func builder(progress: Binding<CGFloat>) -> some View {
+        switch self {
         case .first: StoryTpl(self, .green, "1", progress)
         case .second: StoryTpl(self, .brown, "2", progress)
         case .third: StoryTpl(self, .purple, "3", progress)
@@ -27,25 +26,22 @@ public enum Stories: IStory {
         case .fifth: StoryTpl(self, .orange, "5", progress)
         }
     }
-    
-    
+
     /// Define every story duration or just one as a default for everyone
     public var duration: TimeInterval {
-        switch self{
-        case .first, .third : return 2
-        default : return 1
+        switch self {
+        case .first, .third: return 2
+        default: return 1
         }
     }
 
     /// Optianl param to define color scheme for some stories
     /// Sometimes one story demands light scheme the other demands dark becouse of story's design
     public var colorScheme: ColorScheme? {
-        switch(self) {
+        switch self {
         case .first: return .light
         case .fourth: return .light
         default: return .dark
         }
     }
-
-
 }

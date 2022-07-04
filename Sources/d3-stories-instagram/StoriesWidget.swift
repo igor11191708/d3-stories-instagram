@@ -9,35 +9,34 @@ import SwiftUI
 
 /// Widget demonstrating stories
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
-public struct StoriesWidget<M : IStoriesManager>: View {
-
+public struct StoriesWidget<M: IStoriesManager>: View {
     public typealias Item = M.Element
-   
+
     // MARK: - Config
-    
+
     /// Managing stories life circle
     let manager: M.Type
-    
+
     /// Set of stories
     let stories: [M.Element]
-    
+
     /// Start story
     let current: Item?
-    
-    ///`.once` or `.circle`
+
+    /// `.once` or `.circle`
     let strategy: Strategy
-    
-    ///Delay before start stories
+
+    /// Delay before start stories
     let leeway: DispatchTimeInterval
-    
+
     /// Shared var to control stories running process by external controls that are not inside StoriesWidget
-    var pause : Binding<Bool>
-    
+    var pause: Binding<Bool>
+
     /// React on stories state change
-    let onStoriesStateChanged : ((StoriesState) -> Void)?
+    let onStoriesStateChanged: ((StoriesState) -> Void)?
 
     // MARK: - Life circle
-    
+
     /// - Parameters:
     ///   - manager: Start story
     ///   - current: Start story
@@ -51,10 +50,9 @@ public struct StoriesWidget<M : IStoriesManager>: View {
         current: Item? = nil,
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0),
-        pause : Binding<Bool> = .constant(false),
-        onStoriesStateChanged : ((StoriesState) -> Void)?
+        pause: Binding<Bool> = .constant(false),
+        onStoriesStateChanged: ((StoriesState) -> Void)?
     ) {
-       
         self.manager = manager
         self.stories = stories
         self.current = current
@@ -63,12 +61,12 @@ public struct StoriesWidget<M : IStoriesManager>: View {
         self.pause = pause
         self.onStoriesStateChanged = onStoriesStateChanged
     }
-    
+
     /// The content and behavior of the view.
     public var body: some View {
-        if let error = StoriesError.validate(stories){
+        if let error = StoriesError.validate(stories) {
             error.builder
-        }else{
+        } else {
             StoriesView(
                 manager: manager,
                 stories: stories,
@@ -78,8 +76,8 @@ public struct StoriesWidget<M : IStoriesManager>: View {
                 pause: pause
             )
             .onPreferenceChange(StoriesStateKey.self) { state in
-                onStoriesStateChanged?(state) }
+                onStoriesStateChanged?(state)
+            }
         }
     }
 }
-

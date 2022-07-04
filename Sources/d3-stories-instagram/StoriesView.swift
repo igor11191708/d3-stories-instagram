@@ -8,8 +8,7 @@
 import SwiftUI
 
 /// Component demonstrating stories
-struct StoriesView<M : IStoriesManager>: View {
-
+struct StoriesView<M: IStoriesManager>: View {
     typealias Item = M.Element
 
     /// Detecting color scheme
@@ -37,11 +36,10 @@ struct StoriesView<M : IStoriesManager>: View {
         leeway: DispatchTimeInterval = .seconds(0),
         pause: Binding<Bool>
     ) {
-
         self.pause = pause
 
         _model = StateObject(wrappedValue:
-                manager.init(stories: stories, current: current, strategy: strategy, leeway: leeway)
+            manager.init(stories: stories, current: current, strategy: strategy, leeway: leeway)
         )
     }
 
@@ -54,16 +52,14 @@ struct StoriesView<M : IStoriesManager>: View {
             progressView
                 .padding(.top, h)
         }
-            .environment(\.colorScheme, model.current.colorScheme ?? colorScheme)
-            .onAppear(perform: model.start)
-            .onDisappear(perform: model.finish)
-            .onChange(of: pause.wrappedValue, perform: onPause)
-            .preference(key: StoriesStateKey.self, value: model.state)
-
+        .environment(\.colorScheme, model.current.colorScheme ?? colorScheme)
+        .onAppear(perform: model.start)
+        .onDisappear(perform: model.finish)
+        .onChange(of: pause.wrappedValue, perform: onPause)
+        .preference(key: StoriesStateKey.self, value: model.state)
     }
 
     // MARK: - Private
-
 
     /// Process pause, resume actions Check suspended as action can come from Gesture or external source to pause or resume stories run
     /// - Parameter value: true - pause, false - resume
@@ -79,19 +75,19 @@ struct StoriesView<M : IStoriesManager>: View {
         }
     }
 
-    ///Managing suspend and resume states
+    /// Managing suspend and resume states
     private var gesture: some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged { _ in
-            if !model.suspended {
-                pause.wrappedValue = true
-                model.suspend()
+                if !model.suspended {
+                    pause.wrappedValue = true
+                    model.suspend()
+                }
             }
-        }
             .onEnded { _ in
-            pause.wrappedValue = false
-            model.resume()
-        }
+                pause.wrappedValue = false
+                model.resume()
+            }
     }
 
     /// Cover controls for step forward and backward and pause
@@ -102,17 +98,17 @@ struct StoriesView<M : IStoriesManager>: View {
         GeometryReader { proxy in
             let w = proxy.size.width
             Color.white.opacity(0.001)
-                .onTapGesture() {
-                if model.tapTime {
-                    model.next()
+                .onTapGesture {
+                    if model.tapTime {
+                        model.next()
+                    }
                 }
-            }
                 .simultaneousGesture(gesture)
             Color.white.opacity(0.001)
                 .frame(width: w * 0.25)
-                .onTapGesture() {
-                model.previouse()
-            }
+                .onTapGesture {
+                    model.previouse()
+                }
                 .simultaneousGesture(gesture)
         }
     }
