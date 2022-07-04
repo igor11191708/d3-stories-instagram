@@ -99,7 +99,7 @@ You can observe events of the stories life circle and react on it's change. Pass
 |**begin**| Begin of a story |
 |**end**| End of a story |
 |**suspend**| At the moment of pause and then is kept until is resumed. Informs that currently demostration is paused |
-|**resume**| At the moment of resume and then is kept until next pause or end of a story |
+|**resume**| At the moment of resume and then is kept until the next pause or end of a story |
 |**finish**| Big finish. At the end of the stratagy **.once** |
 
 ![Stories life circle](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/stories_state.png)
