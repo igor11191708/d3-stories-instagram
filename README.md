@@ -116,9 +116,7 @@ There's internal check of stories data
 if you need custom check for stories data, just implement validator conforming to **IStoriesValidater** and pass it as a parameter to **StoriesWidget**
 
 There's an example of custom validator. Take a look on
-[**CustomStoriesValidater**](https://github.com/The-Igor/d3-stories-instagram/blob/main/Sources/d3-stories-instagram/example/CustomStoriesValidater.swift)  implementation
-
-Stories won't start if there's an error. Instead of stories there'll be the error widget with description of errors. 
+[**CustomStoriesValidater**](https://github.com/The-Igor/d3-stories-instagram/blob/main/Sources/d3-stories-instagram/example/CustomStoriesValidater.swift)  implementation. Stories won't be started if there's an error. Instead of stories there'll be the error view with description of errors. 
 
 ![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/errors_handling.png)
 
