@@ -9,6 +9,7 @@ import SwiftUI
 
 /// Component demonstrating stories
 struct StoriesView<M: IStoriesManager>: View {
+    
     typealias Item = M.Element
 
     /// Detecting color scheme
@@ -30,7 +31,7 @@ struct StoriesView<M: IStoriesManager>: View {
     ///   - stories: Set of stories
     init(
         manager: M.Type,
-        stories: [M.Element],
+        stories: [Item],
         current: Item? = nil,
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0),
