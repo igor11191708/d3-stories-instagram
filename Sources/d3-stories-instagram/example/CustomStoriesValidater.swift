@@ -19,7 +19,7 @@ public struct CustomStoriesValidater: IStoriesValidater{
         
         var errors : [StoriesError] = []
         
-        if let first = stories.first, first.duration < 5 {
+        if let first = stories.first, first.duration < 0.5 {
             
             errors.append(.init(description: "The first story less than five seconds"))
         }
