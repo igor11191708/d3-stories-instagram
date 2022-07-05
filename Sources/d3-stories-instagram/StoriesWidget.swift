@@ -54,7 +54,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0),
         pause: Binding<Bool> = .constant(false),
-        validater: IStoriesValidater.Type? = nil,
+        validator: IStoriesValidater.Type? = nil,
         onStoriesStateChanged: ((StoriesState) -> Void)?
     ) {
         self.manager = manager
@@ -64,7 +64,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         self.leeway = leeway
         self.pause = pause
         self.onStoriesStateChanged = onStoriesStateChanged
-        self.validator = validater
+        self.validator = validator
     }
 
     /// The content and behavior of the view.
