@@ -14,6 +14,7 @@
 - [x] Control stories run as by external sources that are not inside StoriesWidget so via Gesture
 - [x] Observing stories life circle for reacting on state change
 - [x] Internal and custom external errors handling
+- [x] Localization (En, Es) All errors and system messages are localized.
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**
@@ -123,11 +124,15 @@ if you need custom check for stories data, just implement validator conforming t
         validator: CustomStoriesValidater.self
     )
 ```
-
 There's an example of custom validator. Take a look on
 [**CustomStoriesValidater**](https://github.com/The-Igor/d3-stories-instagram/blob/main/Sources/d3-stories-instagram/example/CustomStoriesValidater.swift)  implementation. Stories won't be started if there's an error then instead of stories there'll be the error view with description of errors. 
 
-![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/errors_handling.png)
+![Custom error handling for stories](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/errors_handling.png)
+
+## Localization (En, Es)
+All the internal component errors and system messages are localized. Localization for stories is up to you as it's external sources for the component.
+
+![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/localization.png)
 
 
 ## SwiftUI example of using package
