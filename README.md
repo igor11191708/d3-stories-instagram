@@ -14,7 +14,7 @@
 - [x] Control stories run as by external sources that are not inside StoriesWidget so via Gesture
 - [x] Observing stories life circle for reacting on state change
 - [x] Internal and custom external errors handling
-- [x] Localization (En, Es) All errors and system messages are localized.
+- [x] Localization (En, Es) All errors and system messages are localized
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**
