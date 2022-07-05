@@ -9,8 +9,12 @@ import Foundation
 
 
 /// Custom validator
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public struct CustomStoriesValidater: IStoriesValidater{
     
+    /// Check stories
+    /// - Parameter stories: Set of stories
+    /// - Returns: Set of errors found while checking stories set
     public static func validate<T>(_ stories: [T]) -> [StoriesError] where T : IStory {
         
         var errors : [StoriesError] = []

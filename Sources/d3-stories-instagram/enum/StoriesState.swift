@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// Stories view states Inner data for managing stories view life circle
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public enum StoriesState: Equatable {
     /// Waiting to start If there's leeway this is the state during this delay before the big start
     case ready
