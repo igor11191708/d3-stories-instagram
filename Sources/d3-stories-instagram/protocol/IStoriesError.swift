@@ -12,7 +12,7 @@ import SwiftUI
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public protocol IStoriesError: Error, Hashable {
 
-    var description: String { get }
+    var description: LocalizedStringKey { get }
 }
 
 extension IStoriesError {
@@ -20,18 +20,17 @@ extension IStoriesError {
     /// Tpl for demonstrating an error
     @ViewBuilder
     static func builder(_ errors: [Self]) -> some View {
-        let title = "Data validation errors".uppercased()
 
         ScrollView {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(title).multilineTextAlignment(.center)
+                    Text("errors_title", bundle: .module).multilineTextAlignment(.center)
                         .foregroundColor(.primary)
                 }
                     .frame(maxWidth: .infinity)
                     .font(.system(.title))
                 ForEach(errors, id: \.self) { e in
-                    Text("\(e.description)").padding(.top, 2)
+                    Text(e.description, bundle: .module).padding(.top, 2)
                 }
             }.padding()
         }.padding()

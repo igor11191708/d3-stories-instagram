@@ -32,7 +32,7 @@ public enum Stories: IStory {
     public var duration: TimeInterval {
         switch self {
         case .first, .third: return 2
-        default: return 3
+        default: return 0
         }
     }
 

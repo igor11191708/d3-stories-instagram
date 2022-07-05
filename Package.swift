@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "d3-stories-instagram",
+    defaultLocalization: "en",
     platforms: [
         .macOS("12"), .iOS("15"), .tvOS("15"), .watchOS("6"),
     ],

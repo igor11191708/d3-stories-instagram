@@ -1,0 +1,4 @@
+"empty_stories"="There are no stories";
+"duration_error"="Duration must be a positive number greater than zero";
+"errors_title"="Data validation errors";
+

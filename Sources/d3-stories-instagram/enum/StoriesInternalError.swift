@@ -11,9 +11,9 @@ import SwiftUI
 /// Set of errors for input data validation
 enum StoriesInternalError: String, IStoriesValidater, IStoriesError {
 
-    case empty = "There are no stories"
+    case empty = "empty_stories"
 
-    case duration = "Duration must be a positive number greater than zero"
+    case duration = "duration_error"
 
     var id: String {
         self.rawValue
@@ -39,8 +39,8 @@ enum StoriesInternalError: String, IStoriesValidater, IStoriesError {
     }
 
     /// Description for Tpl builder
-    var description: String {
-        self.rawValue
+    var description: LocalizedStringKey {
+        LocalizedStringKey.init(self.rawValue)
     }
 
 }
