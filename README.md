@@ -130,7 +130,9 @@ There's an example of custom validator. Take a look on
 ![Custom error handling for stories](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/errors_handling.png)
 
 ## Localization (En, Es)
-All the internal component errors and system messages are localized. Localization for stories is up to you as it's external sources for the component.
+All the internal errors and system messages that might occur are localized. Localization for stories is up to you as it's external sources for the component.
+
+*Se localizan todos los errores internos y mensajes del sistema que puedan producirse. La localización de las historias depende de usted, ya que se trata de fuentes externas para el componente.*
 
 ![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/localization.png)
 
