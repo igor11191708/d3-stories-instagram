@@ -29,7 +29,11 @@ final class StateManager {
 
     // MARK: - Life circle
 
-    deinit { print("deinit StateManager") }
+    deinit {
+        #if DEBUG
+        print("deinit StateManager")
+        #endif
+    }
 
     // MARK: - Private
 

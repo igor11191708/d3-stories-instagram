@@ -64,7 +64,11 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
             }
     }
 
-    deinit { print("deinit StoriesManager") }
+    deinit {
+        #if DEBUG
+            print("deinit StoriesManager")
+        #endif
+    }
 
     // MARK: - API
 
