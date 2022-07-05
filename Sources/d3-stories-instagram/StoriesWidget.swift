@@ -43,10 +43,12 @@ public struct StoriesWidget<M: IStoriesManager>: View {
 
     /// - Parameters:
     ///   - manager: Start story
-    ///   - current: Start story
+    ///   - stories: Set of stories
+    ///   - current: Story for starting
     ///   - strategy: `.once` or `.circle`
     ///   - leeway: Delay before start stories
-    ///   - stories: Set of stories
+    ///   - pause: Pause and resume control from out side environment
+    ///   - validator: Custom validator for stories input data set
     ///   - onStoriesStateChanged: Clouser to react on stories state change
     public init(
         manager: M.Type,
@@ -64,14 +66,14 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         self.strategy = strategy
         self.leeway = leeway
         self.pause = pause
-        self.onStoriesStateChanged = onStoriesStateChanged
         self.validator = validator
+        self.onStoriesStateChanged = onStoriesStateChanged
     }
 
     /// The content and behavior of the view.
     public var body: some View {
         let e = validate()
-
+               
         if e.isEmpty {
             StoriesView(
                 manager: manager,
@@ -95,6 +97,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
     /// - Returns: Set of errors or empty array
     private func validate() -> [StoriesError] {
         var errors = StoriesInternalError.validate(stories)
+        
         if let v = validator {
             errors += v.validate(stories)
         }
