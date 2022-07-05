@@ -125,7 +125,7 @@ if you need custom check for stories data, just implement validator conforming t
 ```
 
 There's an example of custom validator. Take a look on
-[**CustomStoriesValidater**](https://github.com/The-Igor/d3-stories-instagram/blob/main/Sources/d3-stories-instagram/example/CustomStoriesValidater.swift)  implementation. Stories won't be started if there's an error. Instead of stories there'll be the error view with description of errors. 
+[**CustomStoriesValidater**](https://github.com/The-Igor/d3-stories-instagram/blob/main/Sources/d3-stories-instagram/example/CustomStoriesValidater.swift)  implementation. Stories won't be started if there's an error then instead of stories there'll be the error view with description of errors. 
 
 ![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/errors_handling.png)
 
