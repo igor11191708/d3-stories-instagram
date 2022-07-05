@@ -7,13 +7,15 @@
 
 import Foundation
 
+
+/// Custom validator
 public struct CustomStoriesValidater: IStoriesValidater{
     
     public static func validate<T>(_ stories: [T]) -> [StoriesError] where T : IStory {
         
         var errors : [StoriesError] = []
         
-        if let first = stories.first, first.duration < 0.5 {
+        if let first = stories.first, first.duration < 5 {
             
             errors.append(.init(description: "The first story less than five seconds"))
         }

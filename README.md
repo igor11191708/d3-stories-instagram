@@ -77,7 +77,7 @@ Define enum with your stories conforming to **IStory**
 * `leeway` - delay before start stories, default **.seconds(0)**
 
 * `pause` - shared var to control stories run by external sources that are not inside StoriesWidget, default **.constant(false)**. For example if you launched modal view and need to pause running stories while modal view is existed you can do it via shared variable passing as a binding in StoriesWidget.
-* `validator` - Custom validator to check validity of stories data set
+* `validator` - Custom validator to check validity of stories data set before start
 * `onStoriesStateChanged` - Closure to react on stories state change
 
 
