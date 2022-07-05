@@ -11,7 +11,6 @@ import SwiftUI
 /// Set of errors for input data validation
 enum StoriesInternalError: String, IStoriesValidater, IStoriesError {
 
-
     case empty = "There are no stories"
 
     case duration = "Duration must be a positive number greater than zero"
