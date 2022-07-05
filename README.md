@@ -77,6 +77,8 @@ Define enum with your stories conforming to **IStory**
 * `leeway` - delay before start stories, default **.seconds(0)**
 
 * `pause` - shared var to control stories run by external sources that are not inside StoriesWidget, default **.constant(false)**. For example if you launched modal view and need to pause running stories while modal view is existed you can do it via shared variable passing as a binding in StoriesWidget.
+* `validator` - Custom validator to check validity of stories data set
+* `onStoriesStateChanged` - Closure to react on stories state change
 
 
 ## Stories life circle
@@ -103,6 +105,22 @@ You can observe events of the stories life circle and react on it's change. Pass
 |**finish**| Big finish. At the end of the stratagy **.once** |
 
 ![Stories life circle](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/stories_state.png)
+
+## Stories error handling
+There's internal check of stories data
+- There are no stories
+- Duration must be a positive number greater than zero
+
+### Custom stories error handling
+
+if you need custom check for stories data, just implement validator conforming to **IStoriesValidater** and pass it as a parameter to **StoriesWidget**
+
+There's an example of custom validator. Take a look on **CustomStoriesValidater** implementation
+
+Stories won't start if there's an error. Instead of stories there'll be the error widget with description of errors. 
+
+![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/errors_handling.png)
+
 
 ## SwiftUI example of using package
 [d3-stories-instagram-example](https://github.com/The-Igor/d3-stories-instagram-example)

@@ -35,6 +35,9 @@ public struct StoriesWidget<M: IStoriesManager>: View {
     /// React on stories state change
     let onStoriesStateChanged: ((StoriesState) -> Void)?
 
+    /// Custom validator to check validity of stories data set
+    let validator: IStoriesValidater.Type?
+
     // MARK: - Life circle
 
     /// - Parameters:
@@ -51,6 +54,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0),
         pause: Binding<Bool> = .constant(false),
+        validater: IStoriesValidater.Type? = nil,
         onStoriesStateChanged: ((StoriesState) -> Void)?
     ) {
         self.manager = manager
@@ -60,13 +64,14 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         self.leeway = leeway
         self.pause = pause
         self.onStoriesStateChanged = onStoriesStateChanged
+        self.validator = validater
     }
 
     /// The content and behavior of the view.
     public var body: some View {
-        if let error = StoriesError.validate(stories) {
-            error.builder
-        } else {
+        let e = validate()
+
+        if e.isEmpty {
             StoriesView(
                 manager: manager,
                 stories: stories,
@@ -75,9 +80,24 @@ public struct StoriesWidget<M: IStoriesManager>: View {
                 leeway: leeway,
                 pause: pause
             )
-            .onPreferenceChange(StoriesStateKey.self) { state in
+                .onPreferenceChange(StoriesStateKey.self) { state in
                 onStoriesStateChanged?(state)
             }
+
+        } else {
+            StoriesError.builder(e)
         }
+    }
+
+    
+    /// Validate stories set
+    /// - Returns: Set of errors or empty array
+    private func validate() -> [StoriesError] {
+        var errors = StoriesInternalError.validate(stories)
+        if let v = validator {
+            errors += v.validate(stories)
+        }
+        
+        return errors
     }
 }
