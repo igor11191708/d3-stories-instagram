@@ -13,6 +13,7 @@
 - [x] Customizable **dark** and **light** scheme support for every story
 - [x] Control stories run as by external sources that are not inside StoriesWidget so via Gesture
 - [x] Observing stories life circle for reacting on state change
+- [x] Internal and custom external errors handling
 
 ## 1. Stories
 Define enum with your stories conforming to **IStory**
