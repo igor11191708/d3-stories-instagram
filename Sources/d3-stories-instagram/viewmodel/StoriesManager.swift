@@ -11,7 +11,6 @@ import SwiftUI
 /// Managing logic for ``StoriesWidget`` component
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public final class StoriesManager<Item: IStory>: IStoriesManager {
-    
     /// Time progress demonstating the current story
     @Published public var progress: CGFloat = StateManager.startProgress
 

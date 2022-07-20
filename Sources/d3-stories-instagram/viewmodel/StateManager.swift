@@ -31,7 +31,7 @@ final class StateManager {
 
     deinit {
         #if DEBUG
-        print("deinit StateManager")
+            print("deinit StateManager")
         #endif
     }
 

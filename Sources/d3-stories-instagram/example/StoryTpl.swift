@@ -10,21 +10,20 @@ import SwiftUI
 /// Example stories template
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public struct StoryTpl<T: IStory>: IStoryTpl {
-    
     /// Detecting color scheme
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
 
     // MARK: - Config
-    
+
     /// background color
     let color: Color
-    
+
     /// Story text
     let text: String
-    
+
     /// Current progress
     @Binding public var progress: CGFloat
-    
+
     /// Story
     public let story: T
 

@@ -9,7 +9,6 @@ import SwiftUI
 
 /// Component demonstrating stories
 struct StoriesView<M: IStoriesManager>: View {
-    
     typealias Item = M.Element
 
     /// Detecting color scheme

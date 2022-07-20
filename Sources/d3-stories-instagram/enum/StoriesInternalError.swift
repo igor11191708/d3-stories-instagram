@@ -7,31 +7,28 @@
 
 import SwiftUI
 
-
 /// Set of errors for input data validation
 enum StoriesInternalError: String, IStoriesValidater, IStoriesError {
-
     case empty = "empty_stories"
 
     case duration = "duration_error"
 
     var id: String {
-        self.rawValue
+        rawValue
     }
 
     /// Validate input data
     /// - Returns: ``StoriesError``
     static func validate<T>(_ stories: [T]) -> [StoriesError] where T: IStory {
-
         var errors = [StoriesError]()
 
         if stories.isEmpty {
-            let e = self.empty
+            let e = empty
             errors.append(.init(description: e.description))
         }
 
         if !stories.allSatisfy({ $0.duration > 0 }) {
-            let e = self.duration
+            let e = duration
             errors.append(.init(description: e.description))
         }
 
@@ -40,7 +37,6 @@ enum StoriesInternalError: String, IStoriesValidater, IStoriesError {
 
     /// Description for Tpl builder
     var description: LocalizedStringKey {
-        LocalizedStringKey.init(self.rawValue)
+        LocalizedStringKey(rawValue)
     }
-
 }

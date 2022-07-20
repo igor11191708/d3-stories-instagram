@@ -10,7 +10,6 @@ import SwiftUI
 /// Widget demonstrating stories
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public struct StoriesWidget<M: IStoriesManager>: View {
-    
     public typealias Item = M.Element
 
     // MARK: - Config
@@ -73,7 +72,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
     /// The content and behavior of the view.
     public var body: some View {
         let e = validate()
-               
+
         if e.isEmpty {
             StoriesView(
                 manager: manager,
@@ -83,7 +82,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
                 leeway: leeway,
                 pause: pause
             )
-                .onPreferenceChange(StoriesStateKey.self) { state in
+            .onPreferenceChange(StoriesStateKey.self) { state in
                 onStoriesStateChanged?(state)
             }
 
@@ -92,16 +91,15 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         }
     }
 
-    
     /// Validate stories set
     /// - Returns: Set of errors or empty array
     private func validate() -> [StoriesError] {
         var errors = StoriesInternalError.validate(stories)
-        
+
         if let v = validator {
             errors += v.validate(stories)
         }
-        
+
         return errors
     }
 }
