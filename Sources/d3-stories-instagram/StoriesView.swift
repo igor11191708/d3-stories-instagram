@@ -113,7 +113,7 @@ struct StoriesView<M: IStoriesManager>: View {
         }
     }
 
-    /// Body template for curent story defined in ``IStory`` property ```builder```
+    /// Body template for current story defined in ``IStory`` property ```builder```
     @ViewBuilder
     private var bodyTpl: some View {
         model.current.builder(progress: $model.progress)

@@ -13,7 +13,7 @@ import SwiftUI
 public protocol IStoriesManager: ObservableObject {
     associatedtype Element: IStory
 
-    /// Time progress demonstating the current story
+    /// Time progress demonstrating the current story
     var progress: CGFloat { get set }
 
     /// Current stories state
@@ -23,7 +23,7 @@ public protocol IStoriesManager: ObservableObject {
     /// Check is suspended
     var suspended: Bool { get }
 
-    /// Time buffer after suspention when Tap gesture is valid to move to the next story
+    /// Time buffer after suspension when Tap gesture is valid to move to the next story
     var tapTime: Bool { get }
 
     // MARK: - Config
@@ -48,13 +48,13 @@ public protocol IStoriesManager: ObservableObject {
     /// Pause showing stories
     func suspend()
 
-    /// Rsume showing stories
+    /// Resume showing stories
     func resume()
 
     /// Next story
     func next()
 
-    /// Previouse story
+    /// Previous story
     func previouse()
 
     /// Finish showing stories

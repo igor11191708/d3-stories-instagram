@@ -11,7 +11,7 @@ import SwiftUI
 /// Managing logic for ``StoriesWidget`` component
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
 public final class StoriesManager<Item: IStory>: IStoriesManager {
-    /// Time progress demonstating the current story
+    /// Time progress demonstrating the current story
     @Published public var progress: CGFloat = StateManager.startProgress
 
     /// Current stories state
@@ -106,7 +106,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
         manager.begin(current.duration)
     }
 
-    /// Previouse story
+    /// Previous story
     public func previouse() {
         current = current.previous
         manager.begin(current.duration)
@@ -135,7 +135,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
         if state == .begin { self.state = state }
     }
 
-    /// Typycal time slot for a story
+    /// Typical time slot for a story
     private func initAnimation() {
         progress = StateManager.startProgress
         runAnimation(1, current.duration)
@@ -150,7 +150,7 @@ public final class StoriesManager<Item: IStory>: IStoriesManager {
         runAnimation(1, duration)
     }
 
-    /// Customed animation for progress
+    /// Costumed animation for progress
     /// - Parameters:
     ///   - progress: Endpoint progress
     ///   - duration: Time

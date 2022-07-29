@@ -52,7 +52,7 @@ struct ProgressBar<Item: IStory>: View {
     /// Progress slot overlay view
     /// - Parameters:
     ///   - item: Story
-    ///   - width: Avalable space
+    ///   - width: Available space
     ///   - current: Current story
     /// - Returns: View
     @ViewBuilder

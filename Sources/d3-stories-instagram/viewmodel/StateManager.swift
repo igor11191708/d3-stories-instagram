@@ -70,7 +70,7 @@ final class StateManager {
         publisher.send(.suspend(progress))
     }
 
-    /// Rsume showing stories
+    /// Resume showing stories
     public func resume() {
         let left = duration - (progress * duration)
 
@@ -81,7 +81,7 @@ final class StateManager {
     /// Start big stories circle
     /// - Parameters:
     ///   - duration: Duration for the first story
-    ///   - leeway: Delay befire start
+    ///   - leeway: Delay before start
     public func start(_ duration: TimeInterval, leeway: DispatchTimeInterval) {
         publisher.send(.start)
         DispatchQueue.main.asyncAfter(deadline: .now() + leeway) { [weak self] in

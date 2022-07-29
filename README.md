@@ -1,4 +1,4 @@
-# SwiftUI and Combine - Stories intro multiplatform widget
+# SwiftUI and Combine - Stories intro multi-platform widget
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FThe-Igor%2Fd3-stories-instagram%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/The-Igor/d3-stories-instagram)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FThe-Igor%2Fd3-stories-instagram%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/The-Igor/d3-stories-instagram)
@@ -102,9 +102,9 @@ You can observe events of the stories life circle and react on it's change. Pass
 |**start**| Big start |
 |**begin**| Begin of a story |
 |**end**| End of a story |
-|**suspend**| At the moment of pause and then is kept until is resumed. Informs that currently demostration is paused |
+|**suspend**| At the moment of pause and then is kept until is resumed. Informs that currently demonstration is paused |
 |**resume**| At the moment of resume and then is kept until the next pause or end of a story |
-|**finish**| Big finish. At the end of the stratagy **.once** |
+|**finish**| Big finish. At the end of the strategy **.once** |
 
 ![Stories life circle](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/stories_state.png)
 

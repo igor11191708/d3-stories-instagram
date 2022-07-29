@@ -14,8 +14,8 @@ public protocol IStory: Hashable, CaseIterable {
 
     // MARK: - Config
 
-    /// Optianl param to define color scheme for some stories
-    /// Sometimes one story demands light scheme the other demands dark becouse of story's design
+    /// Optional param to define color scheme for some stories
+    /// Sometimes one story demands light scheme the other demands dark because of story's design
     var colorScheme: ColorScheme? { get }
 
     /// Story duration
@@ -26,7 +26,7 @@ public protocol IStory: Hashable, CaseIterable {
     /// Define view template for every story
     func builder(progress: Binding<CGFloat>) -> ViewTpl
 
-    /// Check the possition relatively the currently showing story
+    /// Check the position relatively the currently showing story
     func isBefore(_ current: Self) -> Bool
 
     /// Get next element
@@ -40,7 +40,7 @@ public extension IStory {
     /// Default scheme
     var colorScheme: ColorScheme? { nil }
 
-    /// Check the possition relatively the currently showing story
+    /// Check the position relatively the currently showing story
     /// - Parameter current: Current story
     /// - Returns: true - `self`  is before current
     func isBefore(_ current: Self) -> Bool {

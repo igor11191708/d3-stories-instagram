@@ -48,7 +48,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
     ///   - leeway: Delay before start stories
     ///   - pause: Pause and resume control from out side environment
     ///   - validator: Custom validator for stories input data set
-    ///   - onStoriesStateChanged: Clouser to react on stories state change
+    ///   - onStoriesStateChanged: Closure to react on stories state change
     public init(
         manager: M.Type,
         stories: [M.Element],

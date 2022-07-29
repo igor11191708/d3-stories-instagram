@@ -36,8 +36,8 @@ public enum Stories: IStory {
         }
     }
 
-    /// Optianl param to define color scheme for some stories
-    /// Sometimes one story demands light scheme the other demands dark becouse of story's design
+    /// Optional param to define color scheme for some stories
+    /// Sometimes one story demands light scheme the other demands dark because of story's design
     public var colorScheme: ColorScheme? {
         switch self {
         case .first: return .light
