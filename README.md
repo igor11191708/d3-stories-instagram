@@ -3,6 +3,9 @@
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FThe-Igor%2Fd3-stories-instagram%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/The-Igor/d3-stories-instagram)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FThe-Igor%2Fd3-stories-instagram%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/The-Igor/d3-stories-instagram)
 
+## SwiftUI example of using package
+[d3-stories-instagram-example](https://github.com/The-Igor/d3-stories-instagram-example)
+
  ## Features
 - [x] Long tap - pause stories showcase
 - [x] Tap - next story
@@ -136,9 +139,6 @@ All the internal errors and system messages that might occur are localized. Loca
 
 ![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/localization.png)
 
-
-## SwiftUI example of using package
-[d3-stories-instagram-example](https://github.com/The-Igor/d3-stories-instagram-example)
 
 [![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_01.gif)](https://youtu.be/GW01UyqzaeE)
 
