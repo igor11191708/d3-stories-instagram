@@ -19,6 +19,9 @@ struct StoriesView<M: IStoriesManager>: View {
 
     /// Shared var to control stories running process by external controls that are not inside StoriesWidget
     private var pause: Binding<Bool>
+    
+    /// ProgressBar configuration
+    private let progressBarConfig: ProgressBarConfig
 
     // MARK: - Life circle
 
@@ -28,15 +31,18 @@ struct StoriesView<M: IStoriesManager>: View {
     ///   - strategy: `.once` or `.circle`
     ///   - leeway: Delay before start stories
     ///   - stories: Set of stories
+    ///   - progressBarConfig: progressBar configuration: height, spacing, active & inactive colors
     init(
         manager: M.Type,
         stories: [Item],
         current: Item? = nil,
         strategy: Strategy = .circle,
         leeway: DispatchTimeInterval = .seconds(0),
-        pause: Binding<Bool>
+        pause: Binding<Bool>,
+        progressBarConfig: ProgressBarConfig = .init()
     ) {
         self.pause = pause
+        self.progressBarConfig = progressBarConfig
 
         _model = StateObject(wrappedValue:
             manager.init(stories: stories, current: current, strategy: strategy, leeway: leeway)
@@ -123,6 +129,7 @@ struct StoriesView<M: IStoriesManager>: View {
     @ViewBuilder
     private var progressView: some View {
         ProgressBar(
+            config: progressBarConfig, 
             stories: model.stories,
             current: model.current,
             progress: model.progress
