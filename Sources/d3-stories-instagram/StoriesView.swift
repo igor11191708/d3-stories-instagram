@@ -77,7 +77,21 @@ struct StoriesView<M: IStoriesManager>: View {
 
     /// Managing suspend and resume states
     private var gesture: some Gesture {
-        DragGesture(minimumDistance: 0)
+        #if os(tvOS)
+        // Alternative implementation for tvOS
+        return TapGesture(count: 1)
+            .onEnded {
+                if model.suspended {
+                    pause.wrappedValue = false
+                    model.resume()
+                } else {
+                    pause.wrappedValue = true
+                    model.suspend()
+                }
+            }
+        #else
+        // Original implementation for non-tvOS platforms
+        return DragGesture(minimumDistance: 0)
             .onChanged { _ in
                 if !model.suspended {
                     pause.wrappedValue = true
@@ -88,6 +102,7 @@ struct StoriesView<M: IStoriesManager>: View {
                 pause.wrappedValue = false
                 model.resume()
             }
+        #endif
     }
 
     /// Cover controls for step forward and backward and pause

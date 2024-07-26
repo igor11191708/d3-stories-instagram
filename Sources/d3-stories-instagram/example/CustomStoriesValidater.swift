@@ -8,7 +8,7 @@
 import Foundation
 
 /// Custom validator for stories
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
+@available(iOS 15.0, macOS 12.0, tvOS 16.0, watchOS 7.0, *)
 public struct CustomStoriesValidater: IStoriesValidater {
     /// Check stories
     /// - Parameter stories: Set of stories
