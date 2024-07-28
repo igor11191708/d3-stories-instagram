@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Define interface for errors related to validation of data set ``IStory``
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
+@available(iOS 15.0, macOS 12.0, tvOS 16.0, watchOS 10.0, *)
 public protocol IStoriesError: Error, Hashable {
     var description: LocalizedStringKey { get }
 }

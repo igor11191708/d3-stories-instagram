@@ -7,7 +7,7 @@ let package = Package(
     name: "d3-stories-instagram",
     defaultLocalization: "en",
     platforms: [
-        .macOS("12"), .iOS("15"), .tvOS("16"), .watchOS("7"),
+        .macOS("12"), .iOS("15"), .tvOS("16"), .watchOS("10"),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.

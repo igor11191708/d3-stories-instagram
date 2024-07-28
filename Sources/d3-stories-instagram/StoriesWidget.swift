@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Widget demonstrating stories
-@available(iOS 15.0, macOS 12.0, tvOS 16.0, watchOS 7.0, *)
+@available(iOS 15.0, macOS 12.0, tvOS 16.0, watchOS 10.0, *)
 public struct StoriesWidget<M: IStoriesManager>: View {
     public typealias Item = M.Element
 

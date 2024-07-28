@@ -9,7 +9,7 @@ import SwiftUI
 
 /// Interface for managing stories life circle for ``StoriesWidget``
 /// Define your own manager conforming to Stories Manager if you need some specific managing processes
-@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 6.0, *)
+@available(iOS 15.0, macOS 12.0, tvOS 16.0, watchOS 10.0, *)
 public protocol IStoriesManager: ObservableObject {
     associatedtype Element: IStory
 
