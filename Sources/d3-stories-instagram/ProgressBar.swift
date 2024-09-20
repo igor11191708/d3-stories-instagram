@@ -9,11 +9,8 @@ import SwiftUI
 
 /// Indicate time progress for ``StoriesView`` component
 struct ProgressBar<Item: IStory>: View {
-    /// Indicators height
-    private let height: CGFloat = 2
-
-    /// Space between indicators
-    private let spacing: CGFloat = 5
+    /// ProgressBar configuration: height, spacing, active & inactive colors
+    let config: ProgressBarConfig
 
     // MARK: - Config
 
@@ -29,14 +26,14 @@ struct ProgressBar<Item: IStory>: View {
     // MARK: - Life circle
 
     var body: some View {
-        HStack(spacing: spacing) {
+        HStack(spacing: config.spacing) {
             ForEach(stories, id: \.self) { story in
                 GeometryReader { proxy in
                     let width = proxy.size.width
                     itemTpl(story, width)
                 }
             }
-        }.frame(height: height)
+        }.frame(height: config.height)
     }
 
     // MARK: - private
@@ -44,7 +41,7 @@ struct ProgressBar<Item: IStory>: View {
     /// Progress slot view
     @ViewBuilder
     private func itemTpl(_ item: Item, _ width: CGFloat) -> some View {
-        Color.primary.opacity(0.5)
+        config.inactiveColor
             .overlay(progressTpl(item, width, current), alignment: .leading)
             .clipShape(Capsule())
     }
@@ -58,9 +55,9 @@ struct ProgressBar<Item: IStory>: View {
     @ViewBuilder
     private func progressTpl(_ item: Item, _ width: CGFloat, _ current: Item) -> some View {
         if item.isBefore(current) { // has already passed
-            Color.primary
+            config.activeColor
         } else if item == current {
-            Color.primary.frame(width: progress * width) // current progress
+            config.activeColor.frame(width: progress * width) // current progress
         } else {
             EmptyView()
         }

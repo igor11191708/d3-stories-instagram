@@ -37,6 +37,9 @@ public struct StoriesWidget<M: IStoriesManager>: View {
 
     /// Custom validator to check validity of stories data set
     let validator: IStoriesValidater.Type?
+    
+    /// ProgressBar configuration
+    private let progressBarConfig: ProgressBarConfig
 
     // MARK: - Life circle
 
@@ -48,6 +51,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
     ///   - leeway: Delay before start stories
     ///   - pause: Pause and resume control from out side environment
     ///   - validator: Custom validator for stories input data set
+    ///   - progressBarConfig: ProgressBar configuration
     ///   - onStoriesStateChanged: Closure to react on stories state change
     public init(
         manager: M.Type,
@@ -57,6 +61,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         leeway: DispatchTimeInterval = .seconds(0),
         pause: Binding<Bool> = .constant(false),
         validator: IStoriesValidater.Type? = nil,
+        progressBarConfig: ProgressBarConfig = .init(),
         onStoriesStateChanged: ((StoriesState) -> Void)?
     ) {
         self.manager = manager
@@ -66,6 +71,7 @@ public struct StoriesWidget<M: IStoriesManager>: View {
         self.leeway = leeway
         self.pause = pause
         self.validator = validator
+        self.progressBarConfig = progressBarConfig
         self.onStoriesStateChanged = onStoriesStateChanged
     }
 
@@ -80,7 +86,8 @@ public struct StoriesWidget<M: IStoriesManager>: View {
                 current: current,
                 strategy: strategy,
                 leeway: leeway,
-                pause: pause
+                pause: pause, 
+                progressBarConfig: progressBarConfig
             )
             .onPreferenceChange(StoriesStateKey.self) { state in
                 onStoriesStateChanged?(state)
