@@ -84,6 +84,11 @@ Define enum with your stories conforming to **IStory**
 * `validator` - Custom validator to check validity of stories data set before start
 * `onStoriesStateChanged` - Closure to react on stories state change
 
+## Video component
+
+### [SwiftUI VideoPlayer examples](https://github.com/The-Igor/swiftui-loop-videoplayer-example)
+
+![The concept](https://github.com/The-Igor/swiftui-loop-videoplayer-example/blob/main/swiftui-loop-videoplayer-example/img/swiftui_video_player.gif) 
 
 ## Stories life circle
 You can observe events of the stories life circle and react on it's change. Pass closure to config of **StoriesWidget**.<br>
