@@ -84,7 +84,7 @@ Define enum with your stories conforming to **IStory**
 * `validator` - Custom validator to check validity of stories data set before start
 * `onStoriesStateChanged` - Closure to react on stories state change
 
-## [Video component](https://github.com/The-Igor/swiftui-loop-videoplayer-example)
+## [Add video component](https://github.com/The-Igor/swiftui-loop-videoplayer-example)
 
 ![The concept](https://github.com/The-Igor/swiftui-loop-videoplayer-example/blob/main/swiftui-loop-videoplayer-example/img/swiftui_video_player.gif) 
 
