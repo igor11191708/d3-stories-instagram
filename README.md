@@ -86,7 +86,7 @@ Define enum with your stories conforming to **IStory**
 
 ## Video component
 
-### [SwiftUI VideoPlayer examples](https://github.com/The-Igor/swiftui-loop-videoplayer-example)
+### [SwiftUI VideoPlayer](https://github.com/The-Igor/swiftui-loop-videoplayer-example)
 
 ![The concept](https://github.com/The-Igor/swiftui-loop-videoplayer-example/blob/main/swiftui-loop-videoplayer-example/img/swiftui_video_player.gif) 
 
