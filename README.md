@@ -1,9 +1,9 @@
 # SwiftUI and Combine - Stories intro multi-platform widget
 
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Figor11191708%2Fd3-stories-instagram%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/igor11191708/d3-stories-instagram)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fswiftuiux%2Fd3-stories-instagram%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/swiftuiux/d3-stories-instagram)
 
 ## SwiftUI example of using package
-[SwiftUI stories instagram example](https://github.com/The-Igor/d3-stories-instagram-example)
+[SwiftUI stories instagram example](https://github.com/swiftuiux/d3-stories-instagram-example)
 
  ## Features
 - [x] Long tap - pause stories showcase
@@ -84,9 +84,9 @@ Define enum with your stories conforming to **IStory**
 * `validator` - Custom validator to check validity of stories data set before start
 * `onStoriesStateChanged` - Closure to react on stories state change
 
-## [Add video component](https://github.com/The-Igor/swiftui-loop-videoplayer-example)
+## [Add video component](https://github.com/swiftuiux/swiftui-loop-videoplayer-example)
 
-![The concept](https://github.com/The-Igor/swiftui-loop-videoplayer-example/blob/main/swiftui-loop-videoplayer-example/img/swiftui_video_player.gif) 
+![The concept](https://github.com/swiftuiux/swiftui-loop-videoplayer-example/blob/main/swiftui-loop-videoplayer-example/img/swiftui_video_player.gif) 
 
 ## Stories life circle
 You can observe events of the stories life circle and react on it's change. Pass closure to config of **StoriesWidget**.<br>
@@ -111,7 +111,7 @@ You can observe events of the stories life circle and react on it's change. Pass
 |**resume**| At the moment of resume and then is kept until the next pause or end of a story |
 |**finish**| Big finish. At the end of the strategy **.once** |
 
-![Stories life circle](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/stories_state.png)
+![Stories life circle](https://github.com/swiftuiux/d3-stories-instagram/blob/main/img/stories_state.png)
 
 ## Stories error handling
 There's internal check of stories data
@@ -130,23 +130,23 @@ if you need custom check for stories data, just implement validator conforming t
     )
 ```
 There's an example of custom validator. Take a look on
-[**CustomStoriesValidater**](https://github.com/The-Igor/d3-stories-instagram/blob/main/Sources/d3-stories-instagram/example/CustomStoriesValidater.swift)  implementation. Stories won't be started if there's an error then instead of stories there'll be the error view with description of errors. 
+[**CustomStoriesValidater**](https://github.com/swiftuiux/d3-stories-instagram/blob/main/Sources/d3-stories-instagram/example/CustomStoriesValidater.swift)  implementation. Stories won't be started if there's an error then instead of stories there'll be the error view with description of errors. 
 
-![Custom error handling for stories](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/errors_handling.png)
+![Custom error handling for stories](https://github.com/swiftuiux/d3-stories-instagram/blob/main/img/errors_handling.png)
 
 ## Localization (En, Es)
 All the internal errors and system messages that might occur are localized. Localization for stories is up to you as it's external source for the component.
 
 *Se localizan todos los errores internos y mensajes del sistema que puedan producirse. La localización de las historias depende de usted, ya que es la fuente externa del componente.*
 
-![Custom stories error handling](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/localization.png)
+![Custom stories error handling](https://github.com/swiftuiux/d3-stories-instagram/blob/main/img/localization.png)
 
 
-[![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_01.gif)](https://youtu.be/GW01UyqzaeE)
+[![click to watch expected UI behavior for the example](https://github.com/swiftuiux/d3-stories-instagram/blob/main/img/img_01.gif)](https://youtu.be/GW01UyqzaeE)
 
-[![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_08.gif)](https://youtu.be/GW01UyqzaeE)
+[![click to watch expected UI behavior for the example](https://github.com/swiftuiux/d3-stories-instagram/blob/main/img/img_08.gif)](https://youtu.be/GW01UyqzaeE)
 
-[![click to watch expected UI behavior for the example](https://github.com/The-Igor/d3-stories-instagram/blob/main/img/img_03.png)](https://youtu.be/GW01UyqzaeE)
+[![click to watch expected UI behavior for the example](https://github.com/swiftuiux/d3-stories-instagram/blob/main/img/img_03.png)](https://youtu.be/GW01UyqzaeE)
 
 ## Documentation(API)
 - You need to have Xcode 13 installed in order to have access to Documentation Compiler (DocC)
